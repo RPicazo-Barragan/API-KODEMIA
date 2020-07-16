@@ -5,7 +5,7 @@ const router = express.Router()
 // un router es un conjuto de rutas o subconjuto de rutas 
 // funciona basicamnet como lo hace app
 const koders = require('../usecases/koders')
-const { request, response } = require('express')
+
 
 
 router.get('/',async (request,response)=>{
