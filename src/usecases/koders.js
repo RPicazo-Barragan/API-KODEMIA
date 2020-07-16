@@ -17,8 +17,13 @@ function deletee(koderId){
     return Koders.findByIdAndRemove(koderId)
 }
 
+function update(koderId,dataToUpdate){
+    return Koders.findByIdAndUpdate(koderId,dataToUpdate)
+}
+
 module.exports = {
     getAll,
     create,
-    deletee 
+    deletee,
+    update
 }

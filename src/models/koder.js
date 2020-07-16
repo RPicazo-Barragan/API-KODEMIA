@@ -19,7 +19,7 @@ const koderSchema = new mongoose.Schema({
         required: true,
         enum: [
             'male',
-            'famele',
+            'female',
             'nombinary'
         ]
 
