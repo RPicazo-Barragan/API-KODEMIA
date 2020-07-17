@@ -1,4 +1,6 @@
 
+require('dotenv').config()
+
 const dbConnect = require('./src/lib/db')
 const server = require('./src/server')
 
