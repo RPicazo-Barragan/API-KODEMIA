@@ -22,7 +22,16 @@ const koderSchema = new mongoose.Schema({
             'female',
             'nombinary'
         ]
-
+    },
+    email:{
+        type: String,
+        required: true,
+        match: /^.+@.+\..+$/
+    },
+    password:{
+        type: String,
+        required: true,
+        min: 1
     }
 })
 

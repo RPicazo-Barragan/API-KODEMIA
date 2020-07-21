@@ -6,9 +6,19 @@ const router = express.Router()
 // funciona basicamnet como lo hace app
 const koders = require('../usecases/koders')
 
+router.use((request,response,next)=>{
+    console.log('A nivel router: ',request.ricciardo),
+    next()
+},(request,response,next)=>{
+    console.log('middleWare router 2')
+    next()
+})
 
-
-router.get('/',async (request,response)=>{
+router.get('/',(request,response,next)=>{
+console.log('middleware de endpoint GET kouders')
+next()
+},
+async (request,response)=>{
    
     try {
         const allkoders = await koders.getAll()
