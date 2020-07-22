@@ -5,6 +5,7 @@ const router = express.Router()
 // un router es un conjuto de rutas o subconjuto de rutas 
 // funciona basicamnet como lo hace app
 const koders = require('../usecases/koders')
+const auth = require('../middlewares/auth')
 
 router.use((request,response,next)=>{
     console.log('A nivel router: ',request.ricciardo),
@@ -15,7 +16,7 @@ router.use((request,response,next)=>{
 })
 
 router.get('/',(request,response,next)=>{
-console.log('middleware de endpoint GET kouders')
+console.log('middleware de endpoint')
 next()
 },
 async (request,response)=>{
@@ -39,8 +40,9 @@ async (request,response)=>{
  
 })
 
-router.post('/',async (request,response)=>{
+router.post('/', auth ,async (request,response)=>{
     try {
+        console.log('koder: ',request.koder)
         const newKoderData = request.body
         const newKoder =await koders.create(newKoderData)
         response.json({

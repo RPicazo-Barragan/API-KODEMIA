@@ -4,6 +4,7 @@
 
 const Koders = require('../models/koder')
 const bcrypt = require('../lib/bcrypt')
+const jwt = require('../lib/jwt')
 
 
 function getAll (){
@@ -35,10 +36,28 @@ async function signup (koderData) {
     })
 }
 
+async function login(email,passwordPlain){
+    const koderByEmail = await Koders.findOne({ email })
+    if (!koderByEmail){
+        //se ejecuta cuando no encuentra coicidencias
+        throw new Error('Email not found')
+    }
+
+    //verificar que sea el password correcto
+    const isValid = await bcrypt.compare(passwordPlain, koderByEmail.password)
+    if(!isValid){
+        throw new Error('Wrong password')
+    }
+     //crear token
+    
+     return jwt.sign({ id: koderByEmail._id })
+}
+
 module.exports = {
     getAll,
     create,
     deletee,
     update,
-    signup
+    signup,
+    login
 }
