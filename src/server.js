@@ -6,7 +6,7 @@ const app = express()
 const kodersRouter = require('./routes/koders')
 const mentorsRouter = require('./routes/mentors')
 const authRouter = require('./routes/auth')
-const knowMetod = require('./middlewares/knowMetod')
+const lessonsRouter = require('./routes/lessons')
 const knowMethod = require('./middlewares/knowMetod')
 
 app.use(cors())
@@ -36,6 +36,7 @@ app.use(knowMethod)
 app.use('/koders',kodersRouter)
 app.use('/mentors',mentorsRouter)
 app.use('/auth',authRouter)
+app.use('/lessons',lessonsRouter)
 
 app.get('/',(request,response)=>{
     response.json({

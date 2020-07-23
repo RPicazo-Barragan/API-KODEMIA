@@ -1,7 +1,5 @@
 
-const http = require('http')
-
-async function knowMethod (request,response,next){
+function knowMethod (request,response,next){
     try {
         const method = request.method
         const url = request.url
